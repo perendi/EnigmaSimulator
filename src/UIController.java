@@ -127,6 +127,25 @@ public class UIController {
         }
     }
 
+    public void encrypt() {
+        String input = plaintext.getText();
+        input = Enigma.formatInput(input);
+        plaintext.setText(input);
+        String output = e.encrypt(input);
+        ciphertext.setText(output);
+
+        // Current tab index
+        int currentTabIndex = this.tabPane.getSelectionModel().getSelectedIndex();
+        // Display current settings
+        if (currentTabIndex == 0) {
+            m3Settings.setText("Wehrmacht M3\n" + e.getSettings());
+            m4Settings.setText("Wehrmacht M3\n" + e.getSettings());
+        } else {
+            m3Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
+            m4Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
+        }
+    }
+
     // Initialise
     @FXML
     public void initialize() {
