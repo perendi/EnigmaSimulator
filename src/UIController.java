@@ -1,9 +1,15 @@
+import java.io.IOException;
+
 import enigma.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TabPane;
@@ -51,6 +57,10 @@ public class UIController {
     @FXML
     private Spinner<String> m4fourthTypeSpinner;
 
+    // Plugboard list
+    @FXML
+    public ListView<String> plugboardList;
+
     // Buttons
     @FXML
     private Button setm3Button;
@@ -70,6 +80,11 @@ public class UIController {
     private TextArea ciphertext;
 
     // Methods
+
+    /**
+     * Sets the Enigma machine according to the settings specified in the settings
+     * area
+     */
     public void setEnigma() {
         // Dummy plugboard for now
         Plugboard p = new Plugboard();
@@ -127,6 +142,10 @@ public class UIController {
         }
     }
 
+    /**
+     * Encrypts the message specified in the plaintext text area and displays the
+     * ciphertext in the ciphertext text area
+     */
     public void encrypt() {
         String input = plaintext.getText();
         input = Enigma.formatInput(input);
@@ -144,6 +163,18 @@ public class UIController {
             m3Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
             m4Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
         }
+    }
+
+    /**
+     * Opens the plugboard configuration window
+     */
+    public void openPlugboardConfig() throws IOException {
+        Parent plugboardParent = FXMLLoader.load(getClass().getResource("PlugboardConfig.fxml"));
+        Scene plugboardScene = new Scene(plugboardParent);
+
+        App.activeStage.setScene(plugboardScene);
+        App.activeStage.show();
+
     }
 
     // Initialise

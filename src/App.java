@@ -8,6 +8,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class App extends Application {
+    public static Stage activeStage;
+    public static Scene homeScene;
+
     public static void main(String[] args) {
         Application.launch(args);
     }
@@ -23,12 +26,13 @@ public class App extends Application {
         // Create the Pane and all Details
         BorderPane root = (BorderPane) loader.load(fxmlStream);
         // Create the Scene
-        Scene scene = new Scene(root);
+        homeScene = new Scene(root);
         // Set the Scene to the Stage
-        stage.setScene(scene);
+        stage.setScene(homeScene);
         // Set the Title to the Stage
         stage.setTitle("Enigma Simulator");
         // Display the Stage
+        activeStage = stage;
         stage.show();
 
     }
