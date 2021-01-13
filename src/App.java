@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     public static Stage activeStage;
+    public static UIController homeController;
     public static Scene homeScene;
 
     public static void main(String[] args) {
@@ -33,6 +34,7 @@ public class App extends Application {
         stage.setTitle("Enigma Simulator");
         // Display the Stage
         activeStage = stage;
+        homeController = loader.getController();
         stage.show();
 
     }

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 import enigma.*;
 import javafx.collections.FXCollections;
@@ -26,6 +27,9 @@ public class UIController {
 
     // Enigma
     private Enigma e;
+
+    // Plugboard
+    public static Plugboard pb = new Plugboard();
 
     // Spinners
     @FXML
@@ -59,7 +63,7 @@ public class UIController {
 
     // Plugboard list
     @FXML
-    public ListView<String> plugboardList;
+    private ListView<String> plugboardList;
 
     // Buttons
     @FXML
@@ -174,7 +178,13 @@ public class UIController {
 
         App.activeStage.setScene(plugboardScene);
         App.activeStage.show();
+    }
 
+    /**
+     * Update plugboardlist
+     */
+    public void updatePlugboardList() {
+        plugboardList.getItems().setAll(pb.getPairs());
     }
 
     // Initialise

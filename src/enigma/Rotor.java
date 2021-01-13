@@ -33,7 +33,7 @@ public class Rotor {
 	 * @param index The index of the character in the alphabet
 	 * @return The character matching the index
 	 */
-	static char toChar(int index) {
+	public static char toChar(int index) {
 		return (char) (index + ASCII_DIFF);
 	}
 
@@ -43,7 +43,7 @@ public class Rotor {
 	 * @param c The character
 	 * @return The position of the character in the alphabet
 	 */
-	static int toIndex(char c) {
+	public static int toIndex(char c) {
 		return (int) (c - ASCII_DIFF);
 	}
 

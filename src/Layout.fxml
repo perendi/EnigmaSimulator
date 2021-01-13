@@ -171,7 +171,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </Label>
-            <ListView fx:id="plugboardList" onMouseClicked="#openPlugboardConfig" orientation="HORIZONTAL" prefHeight="34.0" prefWidth="832.0">
+            <ListView fx:id="plugboardList" onMouseClicked="#openPlugboardConfig" orientation="HORIZONTAL" prefHeight="33.0" prefWidth="812.0">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin></ListView>

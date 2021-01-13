@@ -1,5 +1,6 @@
 package enigma;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -57,5 +58,21 @@ public class Plugboard {
 		else {
 			return this.wiring.get(input);
 		}
+	}
+
+	/**
+	 * Gets a String list of pairs
+	 */
+	public ArrayList<String> getPairs() {
+		ArrayList<String> result = new ArrayList<>();
+
+		Object[] list = this.wiring.values().toArray();
+		for (int i = 0; i < list.length - 1; i += 2) {
+			String firstLetter = Character.toString(Rotor.toChar((int) list[i]));
+			String secondLetter = Character.toString(Rotor.toChar((int) list[i + 1]));
+			result.add(firstLetter + " - " + secondLetter);
+		}
+
+		return result;
 	}
 }
