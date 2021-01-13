@@ -72,34 +72,40 @@ public class Enigma {
 		} else {
 			String output = "";
 			for (int i = 0; i < input.length(); i++) {
-				// Get current index in the alphabet
-				int pos = (int) input.charAt(i) - Rotor.ASCII_DIFF;
+				// check for space
+				if (input.charAt(i) == ' ') {
+					output += " ";
+				} else {
+					// Get current index in the alphabet
+					int pos = (int) input.charAt(i) - Rotor.ASCII_DIFF;
 
-				// Send it through the machine
+					// Send it through the machine
 
-				// Plugboard
-				pos = p.stecker(pos);
+					// Plugboard
+					pos = p.stecker(pos);
 
-				// Rotors
-				advanceRotors();
-				pos = lr.convertFwd(mr.convertFwd(rr.convertFwd(pos)));
-				if (fourthRotor != null) {
-					pos = fourthRotor.convertFwd(pos);
+					// Rotors
+					advanceRotors();
+					pos = lr.convertFwd(mr.convertFwd(rr.convertFwd(pos)));
+					if (fourthRotor != null) {
+						pos = fourthRotor.convertFwd(pos);
+					}
+
+					// Reflector
+					pos = Reflector.reflect(pos);
+
+					// Rotors
+					if (fourthRotor != null) {
+						pos = fourthRotor.convertBwd(pos);
+					}
+					pos = rr.convertBwd(mr.convertBwd(lr.convertBwd(pos)));
+
+					// Plugboard
+					pos = p.stecker(pos);
+
+					output = output + Rotor.toChar(pos);
 				}
 
-				// Reflector
-				pos = Reflector.reflect(pos);
-
-				// Rotors
-				if (fourthRotor != null) {
-					pos = fourthRotor.convertBwd(pos);
-				}
-				pos = rr.convertBwd(mr.convertBwd(lr.convertBwd(pos)));
-
-				// Plugboard
-				pos = p.stecker(pos);
-
-				output = output + Rotor.toChar(pos);
 			}
 			return output;
 		}
@@ -137,7 +143,7 @@ public class Enigma {
 
 	public static String formatInput(String s) {
 		s = s.toUpperCase();
-		s = s.replaceAll("[^A-Z]", "");
+		s = s.replaceAll("[^A-Z ]", "");
 		return s;
 	}
 }
