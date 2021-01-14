@@ -1,5 +1,6 @@
 import enigma.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -25,6 +26,12 @@ public class PlugboardConfigController {
     @FXML
     private TextArea textArea;
 
+    // Delete button
+    @FXML
+    private Button deleteBtn;
+
+    // Functions
+
     /**
      * Back button click action
      */
@@ -33,6 +40,9 @@ public class PlugboardConfigController {
         App.activeStage.show();
     }
 
+    /**
+     * Adds a new pair to the plugboard
+     */
     public void addPair() {
         int first = Rotor.toIndex(l1Box.getValue().charAt(0));
         int second = Rotor.toIndex(l2Box.getValue().charAt(0));
@@ -47,6 +57,22 @@ public class PlugboardConfigController {
             textArea.setText("The pair is successfully added!");
             pairs.getItems().setAll(p.getPairs());
         }
+    }
+
+    public void deletePair() {
+        // Current selection
+        String selection = pairs.getSelectionModel().getSelectedItem();
+        // First letter index
+        int f = Rotor.toIndex(selection.charAt(0));
+        // Second letter index
+        int s = Rotor.toIndex(selection.charAt(4));
+
+        // Delete
+        p.delete(f, s);
+
+        // Refresh text area and list
+        pairs.getItems().setAll(p.getPairs());
+        textArea.setText("The pair has successfully been deleted!");
     }
 
     /**
@@ -69,5 +95,8 @@ public class PlugboardConfigController {
 
         // Set list
         pairs.getItems().setAll(p.getPairs());
+
+        // Disable button
+        deleteBtn.disableProperty().bind(pairs.getSelectionModel().selectedItemProperty().isNull());
     }
 }

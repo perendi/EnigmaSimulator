@@ -25,6 +25,19 @@ public class Plugboard {
 	}
 
 	/**
+	 * Deletes the specified wire
+	 * 
+	 * @param f Index of first letter
+	 * @param s Index of second letter
+	 */
+	public void delete(int f, int s) {
+		if (this.wiring.containsKey(f)) {
+			this.wiring.remove(f);
+			this.wiring.remove(s);
+		}
+	}
+
+	/**
 	 * Gets the current wirings
 	 * 
 	 * @return The current plugboard wirings
@@ -49,6 +62,12 @@ public class Plugboard {
 		}
 	}
 
+	/**
+	 * Simulates the plugboard's functionality
+	 * 
+	 * @param input The index of the input letter
+	 * @return The other end of the "wire"
+	 */
 	public int stecker(int input) {
 		// Self-stecker
 		if (!this.wiring.containsKey(input)) {
@@ -67,9 +86,19 @@ public class Plugboard {
 		ArrayList<String> result = new ArrayList<>();
 
 		Object[] list = this.wiring.values().toArray();
-		for (int i = 0; i < list.length - 1; i += 2) {
-			String firstLetter = Character.toString(Rotor.toChar((int) list[i]));
-			String secondLetter = Character.toString(Rotor.toChar((int) list[i + 1]));
+		ArrayList<Integer> aList = new ArrayList<Integer>();
+
+		for (Object l : list) {
+			aList.add((int) l);
+		}
+
+		for (int i = 0; i < aList.size(); i++) {
+			String firstLetter = Character.toString(Rotor.toChar(this.wiring.get(aList.get(i))));
+			String secondLetter = Character.toString(Rotor.toChar(aList.get(i)));
+
+			// Remove second letter
+			aList.remove(aList.indexOf(this.wiring.get(aList.get(i))));
+
 			result.add(firstLetter + " - " + secondLetter);
 		}
 
