@@ -1,13 +1,15 @@
 package enigma;
 
 /**
- * Reflector class
+ * The Reflector class
  * 
  * @author Daniel Matyas Perendi
  */
 public class Reflector {
 
+	// M3 default reflector
 	static final String REFLECTOR_B = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
+	// M4 default reflector
 	static final String REFLECTOR_B_THIN = "ENKQAUYWJICOPBLMDXZVFTHRGS";
 
 	/**

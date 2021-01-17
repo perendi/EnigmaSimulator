@@ -47,6 +47,9 @@ public class Rotor {
 		return (int) (c - ASCII_DIFF);
 	}
 
+	/**
+	 * Advances the rotor and wraps around if needed
+	 */
 	public void advance() {
 		// Reset rotor
 		if (getPosition() == (ALPHABET_LENGTH - 1)) {

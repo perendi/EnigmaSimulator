@@ -1,7 +1,9 @@
 package enigma;
 
 /**
- * @author Daniel Matyas Perendi The Enigma class
+ * The Enigma class
+ * 
+ * @author Daniel Matyas Perendi
  */
 public class Enigma {
 	private Rotor lr, mr, rr, fourthRotor;
@@ -23,19 +25,19 @@ public class Enigma {
 	}
 
 	/**
-	 * Kriegsmarine(Naval enigma) constructor
+	 * Kriegsmarine M4(Naval enigma) constructor
 	 * 
-	 * @param first the first rotor
-	 * @param lr    the second rotor
-	 * @param mr    the third rotor
-	 * @param rr    the fourth rotor
-	 * @param p     the plugboard
+	 * @param first  the first rotor
+	 * @param second the second rotor
+	 * @param third  the third rotor
+	 * @param fourth the fourth rotor
+	 * @param p      the plugboard
 	 */
-	public Enigma(Rotor first, Rotor lr, Rotor mr, Rotor rr, Plugboard p) {
+	public Enigma(Rotor first, Rotor second, Rotor third, Rotor fourth, Plugboard p) {
 		this.fourthRotor = first;
-		this.lr = lr;
-		this.mr = mr;
-		this.rr = rr;
+		this.lr = second;
+		this.mr = third;
+		this.rr = fourth;
 		this.p = p;
 	}
 
@@ -121,22 +123,11 @@ public class Enigma {
 	 */
 	public String getSettings() {
 		if (fourthRotor != null) {
-			// return " First Rotor\tSecond Rotor\tThird Rotor\tFourth Rotor \n" + " " +
-			// fourthRotor.getName() + "\t"
-			// + lr.getName() + "\t" + mr.getName() + "\t" + rr.getName() + " \n" + " "
-			// + fourthRotor.getPosition() + "\t" + lr.getPosition() + "\t" +
-			// mr.getPosition() + "\t"
-			// + rr.getPosition() + " ";
 			return "First Rotor:\t" + fourthRotor.getName() + "\tPosition:\t" + fourthRotor.getPosition()
 					+ "\nSecond Rotor:\t" + lr.getName() + "\t\tPosition:\t" + lr.getPosition() + "\nThird Rotor:\t"
 					+ mr.getName() + "\t\tPosition:\t" + mr.getPosition() + "\nFourth Rotor:\t" + rr.getName()
 					+ "\t\tPosition:\t" + rr.getPosition();
 		} else {
-			// return " Left Rotor\tMiddle Rotor\tRight Rotor \n" + " " + lr.getName() +
-			// "\t" + mr.getName() + "\t"
-			// + rr.getName() + " \n" + " " + lr.getPosition() + "\t" + mr.getPosition() +
-			// "\t"
-			// + rr.getPosition() + " ";
 			return "Left Rotor:\t" + lr.getName() + "\tPosition:\t" + lr.getPosition() + "\nMiddle Rotor:\t"
 					+ mr.getName() + "\tPosition:\t" + mr.getPosition() + "\nRight Rotor:\t" + rr.getName()
 					+ "\tPosition:\t" + rr.getPosition();
@@ -144,6 +135,12 @@ public class Enigma {
 
 	}
 
+	/**
+	 * Converts the input into an Enigma-compatible string
+	 * 
+	 * @param s The input string
+	 * @return The string that is compatible with the Enigma
+	 */
 	public static String formatInput(String s) {
 		s = s.toUpperCase();
 		s = s.replaceAll("[^A-Z ]", "");

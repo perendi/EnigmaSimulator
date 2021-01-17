@@ -1,5 +1,10 @@
 package enigma;
 
+/**
+ * The RotorMappings class containing the permutation information of every rotor
+ * 
+ * @author Daniel Matyas Perendi
+ */
 public class RotorMappings {
 
 	static final String[][] MAPPINGS = { { "I", "EKMFLGDQVZNTOWYHXUSPAIBRCJ", "UWYGADFPVZBECKMTHXSLRINQOJ", "Q" },

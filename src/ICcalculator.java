@@ -1,4 +1,8 @@
-
+/**
+ * The IC calculator class
+ * 
+ * @author Daniel Matyas Perendi
+ */
 public class ICcalculator {
     public final static String[] ALPHABET_HUN = { "A", "Á", "B", "C", "Cs", "D", "Dz", "Dzs", "E", "É", "F", "G", "Gy",
             "H", "I", "Í", "J", "K", "L", "Ly", "M", "N", "Ny", "O", "Ó", "Ö", "Ő", "P", "Q", "R", "S", "Sz", "T", "Ty",
@@ -6,6 +10,13 @@ public class ICcalculator {
     public final static String[] ALPHABET_ENG = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
             "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
+    /**
+     * Counts the number of occurences in a string
+     * 
+     * @param letter The letter we are looking for
+     * @param input  The string we are searching in
+     * @return The total number of occurences
+     */
     private Integer countFreq(String letter, String input) {
         input = input.toUpperCase();
         String findStr = letter.toUpperCase();
@@ -30,6 +41,13 @@ public class ICcalculator {
         }
     }
 
+    /**
+     * Calculates the IC for the given input and alphabet
+     * 
+     * @param input    The input string
+     * @param alphabet The alphabet
+     * @return The Index of coincidence
+     */
     public Double calcIC(String input, String[] alphabet) {
         double sum = 0;
 

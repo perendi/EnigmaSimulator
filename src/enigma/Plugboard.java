@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * @author Daniel Matyas Perendi Plugboard class
+ * The Plugboard class
+ * 
+ * @author Daniel Matyas Perendi
  */
 public class Plugboard {
 
