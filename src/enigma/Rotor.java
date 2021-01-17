@@ -126,4 +126,30 @@ public class Rotor {
 		}
 		return outputDiff;
 	}
+
+	/**
+	 * Checks whether the rotor is at its notch or not
+	 * 
+	 * @return True or false according to its notch position
+	 */
+	public boolean atNotch() {
+		String notch = this.specs[3];
+
+		// One of the M4 rotors
+		if (notch.length() > 1) {
+			if (this.getPosition() == toIndex(notch.charAt(0)) || this.getPosition() == toIndex(notch.charAt(1))) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		// M3 rotors
+		else {
+			if (this.getPosition() == toIndex(notch.charAt(0))) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
 }

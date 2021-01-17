@@ -21,6 +21,7 @@ public class UIController {
 
     // Enigma types
     private final ObservableList<String> m3types = FXCollections.observableArrayList("I", "II", "III", "IV", "V");
+    private final ObservableList<String> m4firstTypes = FXCollections.observableArrayList("BETA", "GAMMA");
     private final ObservableList<String> m4types = FXCollections.observableArrayList("I", "II", "III", "IV", "V", "VI",
             "VII", "VIII");
 
@@ -89,9 +90,6 @@ public class UIController {
      * area
      */
     public void setEnigma() {
-        // Dummy plugboard for now
-        Plugboard p = new Plugboard();
-
         // Current tab index
         int currentTabIndex = this.tabPane.getSelectionModel().getSelectedIndex();
 
@@ -112,7 +110,7 @@ public class UIController {
                 mr.setPosition(m3middlePosSpinner.getValue());
                 Rotor rr = new Rotor(right);
                 rr.setPosition(m3rightPosSpinner.getValue());
-                e = new Enigma(lr, mr, rr, p);
+                e = new Enigma(lr, mr, rr, pb);
                 m3Settings.setText("Wehrmacht M3\n" + e.getSettings());
                 m4Settings.setText("Wehrmacht M3\n" + e.getSettings());
             }
@@ -138,7 +136,7 @@ public class UIController {
                 t.setPosition(m4thirdPosSpinner.getValue());
                 Rotor fo = new Rotor(fourth);
                 fo.setPosition(m4fourthPosSpinner.getValue());
-                e = new Enigma(fi, s, t, fo, p);
+                e = new Enigma(fi, s, t, fo, pb);
                 m3Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
                 m4Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
             }
@@ -207,7 +205,8 @@ public class UIController {
         SpinnerValueFactory<String> m3ltypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m3types);
         SpinnerValueFactory<String> m3mtypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m3types);
         SpinnerValueFactory<String> m3rtypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m3types);
-        SpinnerValueFactory<String> m4firstTypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m4types);
+        SpinnerValueFactory<String> m4firstTypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(
+                m4firstTypes);
         SpinnerValueFactory<String> m4secondTypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m4types);
         SpinnerValueFactory<String> m4thirdTypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m4types);
         SpinnerValueFactory<String> m4fourthTypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m4types);

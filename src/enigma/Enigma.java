@@ -40,21 +40,20 @@ public class Enigma {
 	}
 
 	/**
-	 * Advances all the rotors according to the current settings
+	 * Advances all the rotors according to the current settings (BETA and GAMMA
+	 * never advances)
 	 */
 	private void advanceRotors() {
-		// Right at notch
-		if (rr.getPosition() == 25) {
+		// Right rotor at notch
+		if (rr.atNotch()) {
 			rr.advance();
-			// Middle at notch too
-			if (mr.getPosition() == 25) {
-				// Left at notch too
-				if (fourthRotor != null && lr.getPosition() == 25) {
-					fourthRotor.advance();
-				}
-				lr.advance();
-			}
 			mr.advance();
+		}
+		// Middle rotor at notch
+		else if (mr.atNotch()) {
+			lr.advance();
+			mr.advance();
+			rr.advance();
 		} else {
 			rr.advance();
 		}
@@ -92,7 +91,11 @@ public class Enigma {
 					}
 
 					// Reflector
-					pos = Reflector.reflect(pos);
+					if (fourthRotor != null) {
+						pos = Reflector.reflect_M4(pos);
+					} else {
+						pos = Reflector.reflect_M3(pos);
+					}
 
 					// Rotors
 					if (fourthRotor != null) {
@@ -125,9 +128,9 @@ public class Enigma {
 			// mr.getPosition() + "\t"
 			// + rr.getPosition() + " ";
 			return "First Rotor:\t" + fourthRotor.getName() + "\tPosition:\t" + fourthRotor.getPosition()
-					+ "\nSecond Rotor:\t" + lr.getName() + "\tPosition:\t" + lr.getPosition() + "\nThird Rotor:\t"
-					+ mr.getName() + "\tPosition:\t" + mr.getPosition() + "\nFourth Rotor:\t" + rr.getName()
-					+ "\tPosition:\t" + rr.getPosition();
+					+ "\nSecond Rotor:\t" + lr.getName() + "\t\tPosition:\t" + lr.getPosition() + "\nThird Rotor:\t"
+					+ mr.getName() + "\t\tPosition:\t" + mr.getPosition() + "\nFourth Rotor:\t" + rr.getName()
+					+ "\t\tPosition:\t" + rr.getPosition();
 		} else {
 			// return " Left Rotor\tMiddle Rotor\tRight Rotor \n" + " " + lr.getName() +
 			// "\t" + mr.getName() + "\t"

@@ -41,7 +41,7 @@
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>
                         </Spinner>
-                        <Spinner fx:id="m3leftTypeSpinner" GridPane.rowIndex="1">
+                        <Spinner fx:id="m3leftTypeSpinner" prefHeight="25.0" prefWidth="96.0" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>
@@ -102,7 +102,7 @@
                     </rowConstraints>
                      <children>
                         <Label text="First Rotor" />
-                        <Spinner fx:id="m4firstTypeSpinner" GridPane.rowIndex="1">
+                        <Spinner fx:id="m4firstTypeSpinner" minWidth="-Infinity" prefHeight="25.0" prefWidth="96.0" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>
