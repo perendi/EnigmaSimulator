@@ -19,12 +19,16 @@ public class Rotor {
 	// Rotor specifications
 	public String[] specs;
 
+	// Ring settings
+	public int ringSetting;
+
 	public Rotor(String nr) {
 		for (String[] rm : RotorMappings.MAPPINGS) {
 			if (rm[0].equals(nr)) {
 				this.specs = rm;
 			}
 		}
+		this.ringSetting = 0;
 	}
 
 	/**
@@ -93,7 +97,28 @@ public class Rotor {
 	}
 
 	/**
-	 * Converts forward the specific letter (passed as an index)
+	 * Gets the ring setting of the Rotor
+	 * @return The ring setting
+	 */
+	public int getRingSetting(){
+		return ringSetting;
+	}
+
+	/**
+	 * Sets the ring setting of the Rotor
+	 * @param s The new ring setting
+	 */
+	public void setRingSetting(int s){
+		if(s < 0 || s > 25){
+			throw new Error("Ring setting out of bound!");
+		}
+		else{
+			this.ringSetting = s;
+		}
+	}
+
+	/**
+	 * Converts the specific letter(passed as an index) forward
 	 * 
 	 * @param index The position of the letter in the alphabet
 	 * @return The output letter's index
@@ -102,6 +127,7 @@ public class Rotor {
 		int p = (this.position + index) % ALPHABET_LENGTH;
 		int output = toIndex(this.specs[1].charAt(p));
 
+		// WILL NEED TO ADD RINGSETTING SOMEWHERE HERE
 		int outputDiff = output - this.position;
 
 		// Wrap around
@@ -112,7 +138,7 @@ public class Rotor {
 	}
 
 	/**
-	 * Converts backward the specific letter (passed as an index)
+	 * Converts the specific letter(passed as an index) backward
 	 * 
 	 * @param index The position of the letter in the alphabet
 	 * @return The output letter's index

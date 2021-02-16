@@ -123,14 +123,14 @@ public class Enigma {
 	 */
 	public String getSettings() {
 		if (fourthRotor != null) {
-			return "First Rotor:\t" + fourthRotor.getName() + "\tPosition:\t" + fourthRotor.getPosition()
-					+ "\nSecond Rotor:\t" + lr.getName() + "\t\tPosition:\t" + lr.getPosition() + "\nThird Rotor:\t"
-					+ mr.getName() + "\t\tPosition:\t" + mr.getPosition() + "\nFourth Rotor:\t" + rr.getName()
-					+ "\t\tPosition:\t" + rr.getPosition();
+			return "First Rotor:\t" + fourthRotor.getName() + "\tPosition:\t" + fourthRotor.getPosition() + "\tRing:\t" + fourthRotor.getRingSetting()
+					+ "\nSecond Rotor:\t" + lr.getName() + "\t\tPosition:\t" + lr.getPosition() + "\tRing:\t" + lr.getRingSetting() + "\nThird Rotor:\t"
+					+ mr.getName() + "\t\tPosition:\t" + mr.getPosition()+ "\tRing:\t" + mr.getRingSetting() + "\nFourth Rotor:\t" + rr.getName()
+					+ "\t\tPosition:\t" + rr.getPosition() + "\tRing:\t" + rr.getRingSetting();
 		} else {
-			return "Left Rotor:\t" + lr.getName() + "\tPosition:\t" + lr.getPosition() + "\nMiddle Rotor:\t"
-					+ mr.getName() + "\tPosition:\t" + mr.getPosition() + "\nRight Rotor:\t" + rr.getName()
-					+ "\tPosition:\t" + rr.getPosition();
+			return "Left Rotor:\t" + lr.getName() + "\tPosition:\t" + lr.getPosition() + "\tRing:\t" + lr.getRingSetting() + "\nMiddle Rotor:\t"
+					+ mr.getName() + "\tPosition:\t" + mr.getPosition() + "\tRing:\t" + mr.getRingSetting() + "\nRight Rotor:\t" + rr.getName()
+					+ "\tPosition:\t" + rr.getPosition() + "\tRing:\t" + rr.getRingSetting();
 		}
 
 	}
