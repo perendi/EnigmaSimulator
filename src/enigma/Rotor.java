@@ -125,16 +125,20 @@ public class Rotor {
 	 */
 	public int convertFwd(int index) {
 		int p = (this.position + index) % ALPHABET_LENGTH;
-		int output = toIndex(this.specs[1].charAt(p));
+		
+		// int output = toIndex(this.specs[1].charAt(p));
+		int charShift = p - this.ringSetting;
+		if(charShift < 0) charShift += ALPHABET_LENGTH;
+		int output = (toIndex(this.specs[1].charAt(charShift))+this.ringSetting)%ALPHABET_LENGTH;
 
-		// WILL NEED TO ADD RINGSETTING SOMEWHERE HERE
 		int outputDiff = output - this.position;
 
 		// Wrap around
 		if (outputDiff < 0) {
 			return outputDiff + ALPHABET_LENGTH;
 		}
-		return outputDiff;
+
+		return outputDiff ;
 	}
 
 	/**
@@ -145,13 +149,18 @@ public class Rotor {
 	 */
 	public int convertBwd(int index) {
 		int p = (this.position + index) % ALPHABET_LENGTH;
-		int output = toIndex(this.specs[2].charAt(p));
+
+		int charShift = p - this.ringSetting;
+		if(charShift < 0) charShift += ALPHABET_LENGTH;
+		
+		// int output = toIndex(this.specs[2].charAt(p));
+		int output = (toIndex(this.specs[2].charAt(charShift))+this.ringSetting)%ALPHABET_LENGTH;
 
 		int outputDiff = output - this.position;
 
 		// Wrap around
 		if (outputDiff < 0) {
-			return outputDiff + ALPHABET_LENGTH;
+			return outputDiff + ALPHABET_LENGTH ;
 		}
 		return outputDiff;
 	}

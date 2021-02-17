@@ -35,29 +35,43 @@ public class UIController {
     @FXML
     private Spinner<Integer> m3leftPosSpinner;
     @FXML
+    private Spinner<Integer> m3leftRingSpinner;
+    @FXML
     private Spinner<String> m3leftTypeSpinner;
     @FXML
     private Spinner<Integer> m3middlePosSpinner;
+    @FXML
+    private Spinner<Integer> m3middleRingSpinner;
     @FXML
     private Spinner<String> m3middleTypeSpinner;
     @FXML
     private Spinner<Integer> m3rightPosSpinner;
     @FXML
+    private Spinner<Integer> m3rightRingSpinner;
+    @FXML
     private Spinner<String> m3rightTypeSpinner;
     @FXML
     private Spinner<Integer> m4firstPosSpinner;
+    @FXML
+    private Spinner<Integer> m4firstRingSpinner;
     @FXML
     private Spinner<String> m4firstTypeSpinner;
     @FXML
     private Spinner<Integer> m4secondPosSpinner;
     @FXML
+    private Spinner<Integer> m4secondRingSpinner;
+    @FXML
     private Spinner<String> m4secondTypeSpinner;
     @FXML
     private Spinner<Integer> m4thirdPosSpinner;
     @FXML
+    private Spinner<Integer> m4thirdRingSpinner;
+    @FXML
     private Spinner<String> m4thirdTypeSpinner;
     @FXML
     private Spinner<Integer> m4fourthPosSpinner;
+    @FXML
+    private Spinner<Integer> m4fourthRingSpinner;
     @FXML
     private Spinner<String> m4fourthTypeSpinner;
 
@@ -106,10 +120,13 @@ public class UIController {
             } else {
                 Rotor lr = new Rotor(left);
                 lr.setPosition(m3leftPosSpinner.getValue());
+                lr.setRingSetting(m3leftRingSpinner.getValue());
                 Rotor mr = new Rotor(middle);
                 mr.setPosition(m3middlePosSpinner.getValue());
+                mr.setRingSetting(m3middleRingSpinner.getValue());
                 Rotor rr = new Rotor(right);
                 rr.setPosition(m3rightPosSpinner.getValue());
+                rr.setRingSetting(m3rightRingSpinner.getValue());
                 e = new Enigma(lr, mr, rr, pb);
                 m3Settings.setText("Wehrmacht M3\n" + e.getSettings());
                 m4Settings.setText("Wehrmacht M3\n" + e.getSettings());
@@ -130,12 +147,16 @@ public class UIController {
             } else {
                 Rotor fi = new Rotor(first);
                 fi.setPosition(m4firstPosSpinner.getValue());
+                fi.setRingSetting(m4firstRingSpinner.getValue());
                 Rotor s = new Rotor(second);
                 s.setPosition(m4secondPosSpinner.getValue());
+                s.setRingSetting(m4secondRingSpinner.getValue());
                 Rotor t = new Rotor(third);
                 t.setPosition(m4thirdPosSpinner.getValue());
+                t.setRingSetting(m4thirdRingSpinner.getValue());
                 Rotor fo = new Rotor(fourth);
                 fo.setPosition(m4fourthPosSpinner.getValue());
+                fo.setRingSetting(m4fourthRingSpinner.getValue());
                 e = new Enigma(fi, s, t, fo, pb);
                 m3Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
                 m4Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
@@ -201,6 +222,14 @@ public class UIController {
         SpinnerValueFactory<Integer> m4thirdPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
         SpinnerValueFactory<Integer> m4fourthPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
 
+        SpinnerValueFactory<Integer> m3lringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+        SpinnerValueFactory<Integer> m3mringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+        SpinnerValueFactory<Integer> m3rringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+        SpinnerValueFactory<Integer> m4firstRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+        SpinnerValueFactory<Integer> m4secondRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+        SpinnerValueFactory<Integer> m4thirdRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+        SpinnerValueFactory<Integer> m4fourthRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+
         // Types
         SpinnerValueFactory<String> m3ltypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m3types);
         SpinnerValueFactory<String> m3mtypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m3types);
@@ -214,19 +243,26 @@ public class UIController {
         // Config Spinners
         this.m3leftTypeSpinner.setValueFactory(m3ltypeVals);
         this.m3leftPosSpinner.setValueFactory(m3lposVals);
+        this.m3leftRingSpinner.setValueFactory(m3lringVals);
         this.m3middleTypeSpinner.setValueFactory(m3mtypeVals);
         this.m3middlePosSpinner.setValueFactory(m3mposVals);
+        this.m3middleRingSpinner.setValueFactory(m3mringVals);
         this.m3rightTypeSpinner.setValueFactory(m3rtypeVals);
         this.m3rightPosSpinner.setValueFactory(m3rposVals);
+        this.m3rightRingSpinner.setValueFactory(m3rringVals);
 
         this.m4firstTypeSpinner.setValueFactory(m4firstTypeVals);
         this.m4firstPosSpinner.setValueFactory(m4firstPosVals);
+        this.m4firstRingSpinner.setValueFactory(m4firstRingVals);
         this.m4secondTypeSpinner.setValueFactory(m4secondTypeVals);
         this.m4secondPosSpinner.setValueFactory(m4secondPosVals);
+        this.m4secondRingSpinner.setValueFactory(m4secondRingVals);
         this.m4thirdTypeSpinner.setValueFactory(m4thirdTypeVals);
         this.m4thirdPosSpinner.setValueFactory(m4thirdPosVals);
+        this.m4thirdRingSpinner.setValueFactory(m4thirdRingVals);
         this.m4fourthTypeSpinner.setValueFactory(m4fourthTypeVals);
         this.m4fourthPosSpinner.setValueFactory(m4fourthPosVals);
+        this.m4fourthRingSpinner.setValueFactory(m4fourthRingVals);
     }
 
 }
