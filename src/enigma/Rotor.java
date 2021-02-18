@@ -8,10 +8,7 @@ package enigma;
  */
 public class Rotor {
 	// Length of the English alphabet
-	static final int ALPHABET_LENGTH = 26;
-
-	// Index - ASCII difference
-	static final int ASCII_DIFF = 65;
+	// static final int alphabet.length() = 26;
 
 	// Current position of the Rotor
 	private int position;
@@ -19,16 +16,20 @@ public class Rotor {
 	// Rotor specifications
 	public String[] specs;
 
+	// Alphabet
+	private static String alphabet;
+
 	// Ring settings
 	public int ringSetting;
 
-	public Rotor(String nr) {
+	public Rotor(String nr, Alphabet a) {
 		for (String[] rm : RotorMappings.MAPPINGS) {
-			if (rm[0].equals(nr)) {
+			if (rm[0].equals(nr) && rm[4].equals(a.name)) {
 				this.specs = rm;
 			}
 		}
 		this.ringSetting = 0;
+		alphabet = a.alphabet;
 	}
 
 	/**
@@ -38,7 +39,8 @@ public class Rotor {
 	 * @return The character matching the index
 	 */
 	public static char toChar(int index) {
-		return (char) (index + ASCII_DIFF);
+		return alphabet.charAt(index);
+		// return (char) (index + ASCII_DIFF);
 	}
 
 	/**
@@ -48,7 +50,8 @@ public class Rotor {
 	 * @return The position of the character in the alphabet
 	 */
 	public static int toIndex(char c) {
-		return (int) (c - ASCII_DIFF);
+		return alphabet.indexOf(c);
+		// return (int) (c - ASCII_DIFF);
 	}
 
 	/**
@@ -56,7 +59,7 @@ public class Rotor {
 	 */
 	public void advance() {
 		// Reset rotor
-		if (getPosition() == (ALPHABET_LENGTH - 1)) {
+		if (getPosition() == (alphabet.length() - 1)) {
 			setPosition(0);
 		}
 		// Advance
@@ -89,7 +92,7 @@ public class Rotor {
 	 * @param p The new position
 	 */
 	public void setPosition(int p) {
-		if (p < ALPHABET_LENGTH && p > -1) {
+		if (p < alphabet.length() && p > -1) {
 			position = p;
 		} else {
 			throw new Error("Position out of bound!");
@@ -124,18 +127,18 @@ public class Rotor {
 	 * @return The output letter's index
 	 */
 	public int convertFwd(int index) {
-		int p = (this.position + index) % ALPHABET_LENGTH;
+		int p = (this.position + index) % alphabet.length();
 		
 		// int output = toIndex(this.specs[1].charAt(p));
 		int charShift = p - this.ringSetting;
-		if(charShift < 0) charShift += ALPHABET_LENGTH;
-		int output = (toIndex(this.specs[1].charAt(charShift))+this.ringSetting)%ALPHABET_LENGTH;
+		if(charShift < 0) charShift += alphabet.length();
+		int output = (toIndex(this.specs[1].charAt(charShift))+this.ringSetting)%alphabet.length();
 
 		int outputDiff = output - this.position;
 
 		// Wrap around
 		if (outputDiff < 0) {
-			return outputDiff + ALPHABET_LENGTH;
+			return outputDiff + alphabet.length();
 		}
 
 		return outputDiff ;
@@ -148,19 +151,19 @@ public class Rotor {
 	 * @return The output letter's index
 	 */
 	public int convertBwd(int index) {
-		int p = (this.position + index) % ALPHABET_LENGTH;
+		int p = (this.position + index) % alphabet.length();
 
 		int charShift = p - this.ringSetting;
-		if(charShift < 0) charShift += ALPHABET_LENGTH;
+		if(charShift < 0) charShift += alphabet.length();
 		
 		// int output = toIndex(this.specs[2].charAt(p));
-		int output = (toIndex(this.specs[2].charAt(charShift))+this.ringSetting)%ALPHABET_LENGTH;
+		int output = (toIndex(this.specs[2].charAt(charShift))+this.ringSetting)%alphabet.length();
 
 		int outputDiff = output - this.position;
 
 		// Wrap around
 		if (outputDiff < 0) {
-			return outputDiff + ALPHABET_LENGTH ;
+			return outputDiff + alphabet.length() ;
 		}
 		return outputDiff;
 	}

@@ -90,8 +90,8 @@ public class PlugboardConfigController {
     public void initialize() {
         p = UIController.pb;
         // Set letter box options
-        l1Box.getItems().addAll("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
-        l2Box.getItems().addAll("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
+        l1Box.getItems().addAll(UIController.alphabet.alphabet.split(""));
+        l2Box.getItems().addAll(UIController.alphabet.alphabet.split(""));
 
         // Set list
         pairs.getItems().setAll(p.getPairs());

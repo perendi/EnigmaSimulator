@@ -1,6 +1,8 @@
 import java.io.IOException;
 
 import enigma.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -18,6 +21,9 @@ import javafx.scene.control.Alert.AlertType;
 
 public class UIController {
     // Variables
+
+    // Alphabet in use
+    public static Alphabet alphabet = new Alphabet("English");
 
     // Enigma types
     private final ObservableList<String> m3types = FXCollections.observableArrayList("I", "II", "III", "IV", "V");
@@ -30,6 +36,10 @@ public class UIController {
 
     // Plugboard
     public static Plugboard pb = new Plugboard();
+
+    // Language picker
+    @FXML
+    private ChoiceBox<String> languagePicker;
 
     // Spinners
     @FXML
@@ -118,16 +128,16 @@ public class UIController {
                 Alert alert = new Alert(AlertType.ERROR, "No two rotors can be of the same type!");
                 alert.showAndWait();
             } else {
-                Rotor lr = new Rotor(left);
+                Rotor lr = new Rotor(left, alphabet);
                 lr.setPosition(m3leftPosSpinner.getValue());
                 lr.setRingSetting(m3leftRingSpinner.getValue());
-                Rotor mr = new Rotor(middle);
+                Rotor mr = new Rotor(middle, alphabet);
                 mr.setPosition(m3middlePosSpinner.getValue());
                 mr.setRingSetting(m3middleRingSpinner.getValue());
-                Rotor rr = new Rotor(right);
+                Rotor rr = new Rotor(right, alphabet);
                 rr.setPosition(m3rightPosSpinner.getValue());
                 rr.setRingSetting(m3rightRingSpinner.getValue());
-                e = new Enigma(lr, mr, rr, pb);
+                e = new Enigma(lr, mr, rr, pb, alphabet);
                 m3Settings.setText("Wehrmacht M3\n" + e.getSettings());
                 m4Settings.setText("Wehrmacht M3\n" + e.getSettings());
             }
@@ -145,19 +155,19 @@ public class UIController {
                 Alert alert = new Alert(AlertType.ERROR, "No two rotors can be of the same type!");
                 alert.showAndWait();
             } else {
-                Rotor fi = new Rotor(first);
+                Rotor fi = new Rotor(first, alphabet);
                 fi.setPosition(m4firstPosSpinner.getValue());
                 fi.setRingSetting(m4firstRingSpinner.getValue());
-                Rotor s = new Rotor(second);
+                Rotor s = new Rotor(second, alphabet);
                 s.setPosition(m4secondPosSpinner.getValue());
                 s.setRingSetting(m4secondRingSpinner.getValue());
-                Rotor t = new Rotor(third);
+                Rotor t = new Rotor(third, alphabet);
                 t.setPosition(m4thirdPosSpinner.getValue());
                 t.setRingSetting(m4thirdRingSpinner.getValue());
-                Rotor fo = new Rotor(fourth);
+                Rotor fo = new Rotor(fourth, alphabet);
                 fo.setPosition(m4fourthPosSpinner.getValue());
                 fo.setRingSetting(m4fourthRingSpinner.getValue());
-                e = new Enigma(fi, s, t, fo, pb);
+                e = new Enigma(fi, s, t, fo, pb, alphabet);
                 m3Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
                 m4Settings.setText("Naval 4-Rotor Enigma\n" + e.getSettings());
             }
@@ -170,7 +180,7 @@ public class UIController {
      */
     public void encrypt() {
         String input = plaintext.getText();
-        input = Enigma.formatInput(input);
+        input = e.formatInput(input);
         plaintext.setText(input);
         String output = e.encrypt(input);
         ciphertext.setText(output);
@@ -205,30 +215,42 @@ public class UIController {
         plugboardList.getItems().setAll(pb.getPairs());
     }
 
-    // Initialise
-    @FXML
-    public void initialize() {
-        // Default Enigma
-        e = new Enigma(new Rotor("I"), new Rotor("II"), new Rotor("III"), new Plugboard());
-        m3Settings.setText("Wehrmacht M3\n" + e.getSettings());
-        m4Settings.setText("Wehrmacht M3\n" + e.getSettings());
+    /**
+     * Changes the language according to its parameter
+     * 
+     * @param newLanguage the new language
+     */
+    private void changeLanguage(String newLanguage) {
+        alphabet = new Alphabet(newLanguage);
+        
+        // Reset plugboard
+        pb = new Plugboard();
+        updatePlugboardList();
+        
+        // Update spinners
+        updateSpinners();
+    }
 
-        // Numbers from 0 to 25 (indexing letters of the alphabet)
-        SpinnerValueFactory<Integer> m3lposVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m3mposVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m3rposVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4firstPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4secondPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4thirdPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4fourthPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+    private void updateSpinners(){
+        // Alphabet size
+        int aSize = alphabet.alphabet.length();
 
-        SpinnerValueFactory<Integer> m3lringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m3mringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m3rringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4firstRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4secondRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4thirdRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
-        SpinnerValueFactory<Integer> m4fourthRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 25, 0);
+        // Numbers from 0 to aSize (indexing letters of the alphabet)
+        SpinnerValueFactory<Integer> m3lposVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m3mposVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m3rposVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4firstPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4secondPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4thirdPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4fourthPosVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+
+        SpinnerValueFactory<Integer> m3lringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m3mringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m3rringVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4firstRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4secondRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4thirdRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
+        SpinnerValueFactory<Integer> m4fourthRingVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);
 
         // Types
         SpinnerValueFactory<String> m3ltypeVals = new SpinnerValueFactory.ListSpinnerValueFactory<String>(m3types);
@@ -263,6 +285,40 @@ public class UIController {
         this.m4fourthTypeSpinner.setValueFactory(m4fourthTypeVals);
         this.m4fourthPosSpinner.setValueFactory(m4fourthPosVals);
         this.m4fourthRingSpinner.setValueFactory(m4fourthRingVals);
+    }
+
+    // Initialise
+    @FXML
+    public void initialize() {
+        // Default Enigma
+        e = new Enigma(new Rotor("I", alphabet), new Rotor("II", alphabet),
+                new Rotor("III", alphabet), new Plugboard(), alphabet);
+        m3Settings.setText("Wehrmacht M3\n" + e.getSettings());
+        m4Settings.setText("Wehrmacht M3\n" + e.getSettings());
+
+        // Initialise Spinners
+        updateSpinners();
+
+        // Languages
+        ObservableList<String> languageOptions = FXCollections.observableArrayList("English", "Hungarian");
+        languagePicker.setItems(languageOptions);
+        languagePicker.setValue(languageOptions.get(0));
+        // Add a listener
+        languagePicker.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            @Override
+            // if the item of the list is changed 
+            public void changed(ObservableValue ov, Number value, Number new_value) 
+            { 
+  
+                // Calls change language method
+                changeLanguage(languageOptions.get(new_value.intValue()));
+            }
+        });
+
+        
+
+        
     }
 
 }

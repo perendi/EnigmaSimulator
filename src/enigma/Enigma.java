@@ -8,6 +8,7 @@ package enigma;
 public class Enigma {
 	private Rotor lr, mr, rr, fourthRotor;
 	private Plugboard p;
+	public Alphabet a;
 
 	/**
 	 * Wehrmacht Constructor
@@ -16,12 +17,14 @@ public class Enigma {
 	 * @param mr Middle rotor
 	 * @param rr Right rotor
 	 * @param p  Plugboard
+	 * @param a Alphabet
 	 */
-	public Enigma(Rotor lr, Rotor mr, Rotor rr, Plugboard p) {
+	public Enigma(Rotor lr, Rotor mr, Rotor rr, Plugboard p, Alphabet a) {
 		this.lr = lr;
 		this.mr = mr;
 		this.rr = rr;
 		this.p = p;
+		this.a = a;
 	}
 
 	/**
@@ -32,13 +35,15 @@ public class Enigma {
 	 * @param third  the third rotor
 	 * @param fourth the fourth rotor
 	 * @param p      the plugboard
+	 * @param a 	the alphabet
 	 */
-	public Enigma(Rotor first, Rotor second, Rotor third, Rotor fourth, Plugboard p) {
+	public Enigma(Rotor first, Rotor second, Rotor third, Rotor fourth, Plugboard p, Alphabet a) {
 		this.fourthRotor = first;
 		this.lr = second;
 		this.mr = third;
 		this.rr = fourth;
 		this.p = p;
+		this.a = a;
 	}
 
 	/**
@@ -78,7 +83,7 @@ public class Enigma {
 					output += " ";
 				} else {
 					// Get current index in the alphabet
-					int pos = (int) input.charAt(i) - Rotor.ASCII_DIFF;
+					int pos = Rotor.toIndex(input.charAt(i));
 
 					// Send it through the machine
 
@@ -94,9 +99,9 @@ public class Enigma {
 
 					// Reflector
 					if (fourthRotor != null) {
-						pos = Reflector.reflect_M4(pos);
+						pos = Reflector.reflect_M4(pos, a);
 					} else {
-						pos = Reflector.reflect_M3(pos);
+						pos = Reflector.reflect_M3(pos, a);
 					}
 
 					// Rotors
@@ -144,9 +149,10 @@ public class Enigma {
 	 * @param s The input string
 	 * @return The string that is compatible with the Enigma
 	 */
-	public static String formatInput(String s) {
+	public String formatInput(String s) {
 		s = s.toUpperCase();
-		s = s.replaceAll("[^A-Z ]", "");
+		String regexp = "[^"+ a.alphabet +"]";
+		s = s.replaceAll(regexp, "");
 		return s;
 	}
 }
