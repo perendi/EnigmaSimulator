@@ -151,7 +151,7 @@ public class Enigma {
 	 */
 	public String formatInput(String s) {
 		s = s.toUpperCase();
-		String regexp = "[^"+ a.alphabet +"]";
+		String regexp = "[^"+ a.alphabet +" ]";
 		s = s.replaceAll(regexp, "");
 		return s;
 	}
