@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="517.0" prefWidth="832.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="871.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController">
    <center>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="317.0" prefWidth="871.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Plugboard">
                <VBox.margin>
@@ -68,7 +68,7 @@
       </VBox>
    </center>
    <top>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane minHeight="-Infinity" prefHeight="226.0" prefWidth="871.0" BorderPane.alignment="CENTER">
          <center>
             <TabPane fx:id="tabPane" prefHeight="173.0" prefWidth="674.0" styleClass="background" stylesheets="@DarkTheme.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
@@ -125,7 +125,7 @@
                                  </GridPane.margin>
                               </Spinner>
                               <Button fx:id="setm3Button" mnemonicParsing="false" onMouseClicked="#setEnigma" text="Set Enigma" GridPane.columnIndex="3" GridPane.rowSpan="2147483647" />
-                              <TextArea fx:id="m3Settings" editable="false" prefHeight="179.0" prefWidth="398.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+                              <TextArea id="settingsTextArea" fx:id="m3Settings" editable="false" prefHeight="179.0" prefWidth="398.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
                                  <GridPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
@@ -158,7 +158,7 @@
                   </Tab>
                 <Tab text="Naval Enigma">
                      <content>
-                        <GridPane>
+                        <GridPane minHeight="-Infinity" prefHeight="160.0" prefWidth="871.0">
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="100.0" />
@@ -225,7 +225,7 @@
                               <Label text="Fourth Rotor" GridPane.columnIndex="3" />
                               <Label text="Position" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                               <Button mnemonicParsing="false" onMouseClicked="#setEnigma" text="Set Enigma" GridPane.columnIndex="4" GridPane.rowSpan="2147483647" />
-                              <TextArea fx:id="m4Settings" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+                              <TextArea id="settingsTextArea" fx:id="m4Settings" editable="false" prefHeight="200.0" prefWidth="351.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
                                  <GridPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
