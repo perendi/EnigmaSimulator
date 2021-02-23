@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class Plugboard {
 
 	private HashMap<Integer, Integer> wiring = new HashMap<Integer, Integer>();
+	private Alphabet a = new Alphabet("English");
 
 	/**
 	 * Adds a new wire to the plugboard
@@ -49,6 +50,15 @@ public class Plugboard {
 	}
 
 	/**
+	 * Sets the alphabet
+	 * 
+	 * @param a the new alphabet
+	 */
+	public void setAlphabet(Alphabet a){
+		this.a = a;
+	}
+
+	/**
 	 * Validates the new wire
 	 * 
 	 * @param f Index of the first letter
@@ -57,7 +67,9 @@ public class Plugboard {
 	 */
 	public boolean checkNewWire(int f, int s) {
 		// Check bounds and plugboard
-		if (f != s && f > -1 && f < 26 && s > -1 && s < 26 && !this.wiring.containsKey(f) || this.wiring.isEmpty()) {
+		if (f != s && f > -1 && f < this.a.alphabet.length() && s > -1 && 
+			s < this.a.alphabet.length() && !this.wiring.containsKey(f)
+			&& !this.wiring.containsKey(s) || this.wiring.isEmpty()) {
 			return true;
 		} else {
 			return false;

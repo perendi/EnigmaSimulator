@@ -1,0 +1,123 @@
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
+.plaintext-area .ciphertext_area{
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.button {
+    /* -fx-padding: 5 22 5 22;    */
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+} 
+
+/* TAB PANE */
+tab-pane *.tab-header-area *.tab-header-background {
+    -fx-background-color:transparent;
+}
+
+  
+.tab-pane {
+    -fx-tab-min-width:120px;
+    -fx-tab-max-width:120px;
+    -fx-tab-min-height:20px;
+    -fx-tab-max-height:20px;
+}
+  
+.tab {
+    -fx-font-size: 11pt;
+    -fx-background-color:white ;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-border-color: white;
+    -fx-border-radius: 5 5 5 5;
+}
+  
+.tab:selected {
+    -fx-background-color: #1d1d1d ;
+    -fx-font-size: 11pt;
+    -fx-border-color: white;
+    -fx-border-width: 1 1 1 1;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-outline: none;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-opacity: 0.6;
+}
+
+.tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color:#1d1d1d;
+    -fx-background-insets: 0;
+    -fx-pref-height: 45px;  
+}
+
+/* TAB PANE END */
+
+/* CHOICE BOX START */
+
+.choice-box {
+    -fx-background-color: white;
+    -fx-mark-color: black;
+}
+
+.choice-box > .label { -fx-text-fill: black; }
+
+.choice-box .context-menu { -fx-background-color: white; }
+
+.choice-box .menu-item > .label { -fx-text-fill: black; }
+
+.choice-box .menu-item:focused > .label { -fx-text-fill: white; }
+
+.choice-box .menu-item:focused { -fx-background-color: #1d1d1d; }
+
+/* CHOICE BOX END */

@@ -225,6 +225,7 @@ public class UIController {
         
         // Reset plugboard
         pb = new Plugboard();
+        pb.setAlphabet(alphabet);
         updatePlugboardList();
         
         // Update spinners
