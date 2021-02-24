@@ -1,13 +1,13 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.base.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.controls.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.fxml.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.graphics.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.media.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.swing.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.web.jar",
-        "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx-swt.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.base.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.controls.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.fxml.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.graphics.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.media.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.swing.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx.web.jar",
+        // "d:\\EnigmaSimulator\\javafx-sdk-11.0.2\\lib\\javafx-swt.jar",
     ]
 }

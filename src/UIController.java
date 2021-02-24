@@ -234,7 +234,7 @@ public class UIController {
 
     private void updateSpinners(){
         // Alphabet size
-        int aSize = alphabet.alphabet.length();
+        int aSize = alphabet.alphabet.length()-1;
 
         // Numbers from 0 to aSize (indexing letters of the alphabet)
         SpinnerValueFactory<Integer> m3lposVals = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, aSize, 0);

@@ -9,6 +9,11 @@
     -fx-opacity: 0.8;
 }
 
+.list-view:focused {
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+}
+
+/* TEXT AREAS START */
 .text-area .content{
     -fx-background-color: #233140;
     
@@ -25,10 +30,11 @@
     -fx-font-family: "System";
 }
 
+/* TEXT AREAS END */
+
+/* BUTTONS START */
+
 .button {
-    /* -fx-padding: 5 22 5 22;    */
-    /* -fx-border-color: #e2e2e2;
-    -fx-border-width: 2; */
     -fx-background-radius: 0;
     -fx-background-color: #2aa3cc;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
@@ -68,10 +74,17 @@
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 } 
+/* BUTTONS END */
+
 
 /* TAB PANE */
 tab-pane *.tab-header-area *.tab-header-background {
     -fx-background-color:transparent;
+}
+
+/* Removed blue selected outline */
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-width: 0;
 }
 
   
