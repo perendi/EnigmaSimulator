@@ -21,7 +21,7 @@ public class App extends Application {
         // Create the FXMLLoader
         FXMLLoader loader = new FXMLLoader();
         // Path to the FXML File
-        String fxmlDocPath = "D:/EnigmaSimulator/Enigma Simulator/src/Layout.fxml";
+        String fxmlDocPath = "src/Layout.fxml";
         FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
 
         // Create the Pane and all Details
