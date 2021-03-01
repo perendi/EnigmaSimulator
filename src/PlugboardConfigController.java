@@ -44,18 +44,25 @@ public class PlugboardConfigController {
      * Adds a new pair to the plugboard
      */
     public void addPair() {
-        int first = Rotor.toIndex(l1Box.getValue().charAt(0));
-        int second = Rotor.toIndex(l2Box.getValue().charAt(0));
-
-        if (first == second) {
+        if (l1Box.getValue() == null || l2Box.getValue() == null){
             textArea.setText(
-                    "The two letters are the same, automatically all the letters are connected to themselves.");
-        } else if (!p.checkNewWire(first, second)) {
-            textArea.setText("One or both of the letters are already connected to another letter in the steckerboard!");
-        } else {
-            p.add(first, second);
-            textArea.setText("The pair is successfully added!");
-            pairs.getItems().setAll(p.getPairs());
+                    "Please pick two letters from the dropdown boxes!");
+        }
+        else{
+            int first = Rotor.toIndex(l1Box.getValue().charAt(0));
+            int second = Rotor.toIndex(l2Box.getValue().charAt(0));
+
+            
+            if (first == second) {
+                textArea.setText(
+                        "The two letters are the same, automatically all the letters are connected to themselves.");
+            } else if (!p.checkNewWire(first, second)) {
+                textArea.setText("One or both of the letters are already connected to another letter in the steckerboard!");
+            } else {
+                p.add(first, second);
+                textArea.setText("The pair is successfully added!");
+                pairs.getItems().setAll(p.getPairs());
+            }
         }
     }
 

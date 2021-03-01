@@ -11,6 +11,7 @@ public class App extends Application {
     public static Stage activeStage;
     public static UIController homeController;
     public static Scene homeScene;
+    public static String theme = "LightTheme.css";
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -28,6 +29,7 @@ public class App extends Application {
         BorderPane root = (BorderPane) loader.load(fxmlStream);
         // Create the Scene
         homeScene = new Scene(root);
+        homeScene.getStylesheets().setAll(theme);
         // Set the Scene to the Stage
         stage.setScene(homeScene);
         // Set the Title to the Stage
@@ -35,7 +37,7 @@ public class App extends Application {
         // Display the Stage
         activeStage = stage;
         homeController = loader.getController();
-        stage.show();
+        activeStage.show();
 
     }
 }

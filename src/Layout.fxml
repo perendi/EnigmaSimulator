@@ -10,13 +10,14 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="871.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="871.0" styleClass="background"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController">
    <center>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="317.0" prefWidth="871.0" BorderPane.alignment="CENTER">
          <children>
@@ -43,7 +44,7 @@
                 <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <TextArea fx:id="plaintext" prefHeight="200.0" prefWidth="200.0" promptText="Type your message here..." styleClass="plaintext-area" wrapText="true" GridPane.rowIndex="1">
+                  <TextArea fx:id="plaintext" prefHeight="200.0" prefWidth="200.0" promptText="Type your message here..." wrapText="true" GridPane.rowIndex="1">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -51,7 +52,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <TextArea fx:id="ciphertext" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Click on the &quot;Encrypt&quot; button to get the ciphertext!" styleClass="ciphertext_area" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextArea fx:id="ciphertext" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Click on the &quot;Encrypt&quot; button to get the ciphertext!" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
@@ -73,7 +74,7 @@
    <top>
       <BorderPane minHeight="-Infinity" prefHeight="226.0" prefWidth="871.0" BorderPane.alignment="CENTER">
          <center>
-            <TabPane fx:id="tabPane" prefHeight="173.0" prefWidth="674.0" styleClass="background" stylesheets="@DarkTheme.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <TabPane fx:id="tabPane" prefHeight="173.0" prefWidth="674.0" styleClass="background" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
                 <Tab text="Wehrmacht (M3)">
                      <content>
@@ -266,7 +267,25 @@
             </TabPane>
          </center>
          <top>
-            <ChoiceBox fx:id="languagePicker" prefWidth="150.0" BorderPane.alignment="CENTER" />
+            <BorderPane prefHeight="16.0" prefWidth="871.0" BorderPane.alignment="CENTER">
+               <center>
+                  <ChoiceBox fx:id="languagePicker" prefWidth="150.0" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <BorderPane.margin>
+                        <Insets top="5.0" />
+                     </BorderPane.margin>
+                  </ChoiceBox>
+               </center>
+               <right>
+                  <ToggleButton fx:id="themeToggle" mnemonicParsing="false" onAction="#toggleTheme" text="Dark mode" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="5.0" />
+                     </BorderPane.margin>
+                  </ToggleButton>
+               </right>
+            </BorderPane>
          </top>
       </BorderPane>
    </top>

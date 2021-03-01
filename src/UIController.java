@@ -17,7 +17,9 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.StageStyle;
 
 public class UIController {
     // Variables
@@ -90,6 +92,9 @@ public class UIController {
     private ListView<String> plugboardList;
 
     // Buttons
+    @FXML
+    private ToggleButton themeToggle;
+
     @FXML
     private Button setm3Button;
 
@@ -197,16 +202,20 @@ public class UIController {
         }
     }
 
+
     /**
      * Opens the plugboard configuration window
      */
     public void openPlugboardConfig() throws IOException {
         Parent plugboardParent = FXMLLoader.load(getClass().getResource("PlugboardConfig.fxml"));
         Scene plugboardScene = new Scene(plugboardParent);
+        // Set style
+        plugboardScene.getStylesheets().setAll(App.activeStage.getScene().getStylesheets());
 
         App.activeStage.setScene(plugboardScene);
         App.activeStage.show();
     }
+
 
     /**
      * Update plugboardlist
@@ -214,6 +223,7 @@ public class UIController {
     public void updatePlugboardList() {
         plugboardList.getItems().setAll(pb.getPairs());
     }
+
 
     /**
      * Changes the language according to its parameter
@@ -286,6 +296,20 @@ public class UIController {
         this.m4fourthTypeSpinner.setValueFactory(m4fourthTypeVals);
         this.m4fourthPosSpinner.setValueFactory(m4fourthPosVals);
         this.m4fourthRingSpinner.setValueFactory(m4fourthRingVals);
+    }
+
+    /**
+     * Toggles between light and dark theme
+     */
+    public void toggleTheme() {
+        if(themeToggle.isSelected()){
+            App.activeStage.getScene().getStylesheets().setAll("DarkTheme.css");
+            themeToggle.setText("Light mode");
+        }
+        else{
+            App.activeStage.getScene().getStylesheets().setAll("LightTheme.css");
+            themeToggle.setText("Dark mode");
+        }
     }
 
     // Initialise

@@ -69,21 +69,21 @@ public class Rotor {
 	}
 
 	/**
-	 * Gets the current position of the Rotor
-	 * 
-	 * @return The current position
-	 */
-	public int getPosition() {
-		return position;
-	}
-
-	/**
 	 * Gets the name of the Rotor
 	 * 
 	 * @return The name
 	 */
 	public String getName() {
 		return specs[0];
+	}
+
+	/**
+	 * Gets the current position of the Rotor
+	 * 
+	 * @return The current position
+	 */
+	public int getPosition() {
+		return position;
 	}
 
 	/**
@@ -128,8 +128,7 @@ public class Rotor {
 	 */
 	public int convertFwd(int index) {
 		int p = (this.position + index) % alphabet.length();
-		
-		// int output = toIndex(this.specs[1].charAt(p));
+
 		int charShift = p - this.ringSetting;
 		if(charShift < 0) charShift += alphabet.length();
 		int output = (toIndex(this.specs[1].charAt(charShift))+this.ringSetting)%alphabet.length();
