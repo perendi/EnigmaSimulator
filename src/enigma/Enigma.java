@@ -101,7 +101,7 @@ public class Enigma {
 					if (fourthRotor != null) {
 						pos = Reflector.reflect_M4(pos, a);
 					} else {
-						pos = Reflector.reflect_M3(pos, a);
+						pos = Reflector.reflect_W(pos, a);
 					}
 
 					// Rotors

@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -34,9 +35,12 @@ public class App extends Application {
         stage.setScene(homeScene);
         // Set the Title to the Stage
         stage.setTitle("Enigma Simulator");
-        // Display the Stage
+        // Set active stage
         activeStage = stage;
         homeController = loader.getController();
+        // Add icon
+        activeStage.getIcons().add(new Image("Enigma_royalty_free.jpg"));
+        // Show active stage
         activeStage.show();
 
     }

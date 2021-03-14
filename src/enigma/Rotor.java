@@ -183,7 +183,7 @@ public class Rotor {
 				return false;
 			}
 		}
-		// M3 rotors
+		// Wehrmacht rotors
 		else {
 			if (this.getPosition() == toIndex(notch.charAt(0))) {
 				return true;

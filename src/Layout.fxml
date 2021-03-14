@@ -76,7 +76,7 @@
          <center>
             <TabPane fx:id="tabPane" prefHeight="173.0" prefWidth="674.0" styleClass="background" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                <Tab text="Wehrmacht (M3)">
+                <Tab text="Wehrmacht">
                      <content>
                         <GridPane prefHeight="144.0" prefWidth="798.0">
                           <columnConstraints>
@@ -95,12 +95,12 @@
                               <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Spinner fx:id="m3leftPosSpinner" editable="true" GridPane.rowIndex="3">
+                              <Spinner fx:id="wleftPosSpinner" editable="true" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Spinner>
-                              <Spinner fx:id="m3leftTypeSpinner" prefHeight="25.0" prefWidth="96.0" GridPane.rowIndex="1">
+                              <Spinner fx:id="wleftTypeSpinner" prefHeight="25.0" prefWidth="96.0" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
@@ -108,28 +108,28 @@
                               <Label text="Left Rotor" />
                               <Label text="Middle Rotor" GridPane.columnIndex="1" />
                               <Label text="Right Rotor" GridPane.columnIndex="2" />
-                              <Spinner fx:id="m3middleTypeSpinner" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Spinner fx:id="wmiddleTypeSpinner" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Spinner>
-                              <Spinner fx:id="m3rightTypeSpinner" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Spinner fx:id="wrightTypeSpinner" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Spinner>
-                              <Spinner fx:id="m3middlePosSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Spinner fx:id="wmiddlePosSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Spinner>
-                              <Spinner fx:id="m3rightPosSpinner" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                              <Spinner fx:id="wrightPosSpinner" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Spinner>
-                              <Button fx:id="setm3Button" mnemonicParsing="false" onMouseClicked="#setEnigma" text="Set Enigma" GridPane.columnIndex="3" GridPane.rowSpan="2147483647" />
-                              <TextArea id="settingsTextArea" fx:id="m3Settings" editable="false" prefHeight="179.0" prefWidth="398.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+                              <Button fx:id="setwButton" mnemonicParsing="false" onMouseClicked="#setEnigma" text="Set Enigma" GridPane.columnIndex="3" GridPane.rowSpan="2147483647" />
+                              <TextArea id="settingsTextArea" fx:id="wSettings" editable="false" prefHeight="179.0" prefWidth="398.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
                                  <GridPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
@@ -141,17 +141,17 @@
                               <Label text="Ring" GridPane.rowIndex="4" />
                               <Label text="Ring" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <Label text="Ring" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                              <Spinner fx:id="m3leftRingSpinner" editable="true" GridPane.rowIndex="5">
+                              <Spinner fx:id="wleftRingSpinner" editable="true" GridPane.rowIndex="5">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Spinner>
-                              <Spinner fx:id="m3middleRingSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <Spinner fx:id="wmiddleRingSpinner" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
                               </Spinner>
-                              <Spinner fx:id="m3rightRingSpinner" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                              <Spinner fx:id="wrightRingSpinner" editable="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                  <GridPane.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </GridPane.margin>
