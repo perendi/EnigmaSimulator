@@ -22,11 +22,10 @@ import javafx.scene.control.Alert.AlertType;
 
 /**
  * The main UI controller class
+ * 
  * @author Daniel Matyas Perendi
  */
 public class UIController {
-    // Variables
-
     // Alphabet in use
     public static Alphabet alphabet = new Alphabet("English");
 
@@ -235,6 +234,9 @@ public class UIController {
      */
     private void changeLanguage(String newLanguage) {
         alphabet = new Alphabet(newLanguage);
+
+        // Default Enigma
+        initEnigma();
         
         // Reset plugboard
         pb = new Plugboard();
@@ -245,6 +247,10 @@ public class UIController {
         updateSpinners();
     }
 
+
+    /**
+     * Updates the spinner values
+     */
     private void updateSpinners(){
         // Alphabet size
         int aSize = alphabet.alphabet.length()-1;
@@ -301,6 +307,20 @@ public class UIController {
         this.m4fourthRingSpinner.setValueFactory(m4fourthRingVals);
     }
 
+
+    /**
+     * Initialises the default Enigma machine
+     */
+    private void initEnigma(){
+        e = new Enigma(new Rotor("I", alphabet), new Rotor("II", alphabet),
+                new Rotor("III", alphabet), new Plugboard(), alphabet);
+        
+        // Set text areas
+        wSettings.setText("Wehrmacht\n" + e.getSettings());
+        m4Settings.setText("Wehrmacht\n" + e.getSettings());
+    }
+
+
     /**
      * Toggles between light and dark theme
      */
@@ -315,14 +335,12 @@ public class UIController {
         }
     }
 
+
     // Initialise
     @FXML
     public void initialize() {
         // Default Enigma
-        e = new Enigma(new Rotor("I", alphabet), new Rotor("II", alphabet),
-                new Rotor("III", alphabet), new Plugboard(), alphabet);
-        wSettings.setText("Wehrmacht\n" + e.getSettings());
-        m4Settings.setText("Wehrmacht\n" + e.getSettings());
+        initEnigma();
 
         // Initialise Spinners
         updateSpinners();
@@ -333,20 +351,14 @@ public class UIController {
         languagePicker.setValue(languageOptions.get(0));
         // Add a listener
         languagePicker.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-
             @Override
             // if the item of the list is changed 
             public void changed(ObservableValue ov, Number value, Number new_value) 
             { 
-  
                 // Calls change language method
                 changeLanguage(languageOptions.get(new_value.intValue()));
             }
         });
-
-        
-
-        
     }
 
 }

@@ -27,6 +27,7 @@ public class Plugboard {
 		}
 	}
 
+
 	/**
 	 * Deletes the specified wire
 	 * 
@@ -40,6 +41,7 @@ public class Plugboard {
 		}
 	}
 
+
 	/**
 	 * Gets the current wirings
 	 * 
@@ -49,6 +51,7 @@ public class Plugboard {
 		return wiring;
 	}
 
+
 	/**
 	 * Sets the alphabet
 	 * 
@@ -57,6 +60,7 @@ public class Plugboard {
 	public void setAlphabet(Alphabet a){
 		this.a = a;
 	}
+
 
 	/**
 	 * Validates the new wire
@@ -76,6 +80,7 @@ public class Plugboard {
 		}
 	}
 
+
 	/**
 	 * Simulates the plugboard's functionality
 	 * 
@@ -92,6 +97,7 @@ public class Plugboard {
 			return this.wiring.get(input);
 		}
 	}
+
 
 	/**
 	 * Gets a String list of pairs
@@ -115,7 +121,6 @@ public class Plugboard {
 
 			result.add(firstLetter + " - " + secondLetter);
 		}
-
 		return result;
 	}
 }

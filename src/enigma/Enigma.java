@@ -27,6 +27,7 @@ public class Enigma {
 		this.a = a;
 	}
 
+
 	/**
 	 * Kriegsmarine M4(Naval enigma) constructor
 	 * 
@@ -45,6 +46,7 @@ public class Enigma {
 		this.p = p;
 		this.a = a;
 	}
+
 
 	/**
 	 * Advances all the rotors according to the current settings (BETA and GAMMA
@@ -65,6 +67,7 @@ public class Enigma {
 			rr.advance();
 		}
 	}
+
 
 	/**
 	 * Encrypts the given string input
@@ -121,6 +124,7 @@ public class Enigma {
 		}
 	}
 
+
 	/**
 	 * Gets the current settings of the Enigma
 	 * 
@@ -143,6 +147,7 @@ public class Enigma {
 
 	}
 
+	
 	/**
 	 * Converts the input into an Enigma-compatible string
 	 * 

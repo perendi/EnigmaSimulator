@@ -29,8 +29,8 @@ public class Reflector {
 		else{
 			return Rotor.toIndex(REFLECTOR_B.charAt(index));
 		}
-		
 	}
+
 
 	/**
 	 * Simulates the reflection for the M4 machine
@@ -46,7 +46,5 @@ public class Reflector {
 		else{
 			return Rotor.toIndex(REFLECTOR_B_THIN.charAt(index));
 		}
-
 	}
-
 }

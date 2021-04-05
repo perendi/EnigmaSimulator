@@ -7,9 +7,6 @@ package enigma;
  *
  */
 public class Rotor {
-	// Length of the English alphabet
-	// static final int alphabet.length() = 26;
-
 	// Current position of the Rotor
 	private int position;
 
@@ -17,11 +14,18 @@ public class Rotor {
 	public String[] specs;
 
 	// Alphabet
-	private static String alphabet;
+	public static String alphabet;
 
 	// Ring settings
 	public int ringSetting;
 
+
+	/**
+	 * Rotor constructor
+	 * 
+	 * @param nr The name of the Rotor
+	 * @param a The alphabet
+	 */
 	public Rotor(String nr, Alphabet a) {
 		for (String[] rm : RotorMappings.MAPPINGS) {
 			if (rm[0].equals(nr) && rm[4].equals(a.name)) {
@@ -40,8 +44,10 @@ public class Rotor {
 	 */
 	public static char toChar(int index) {
 		return alphabet.charAt(index);
+		// return alphabet.substring(index, index+1); RETURNS STRING
 		// return (char) (index + ASCII_DIFF);
 	}
+
 
 	/**
 	 * Converts a character to its position in the alphabet
@@ -53,6 +59,7 @@ public class Rotor {
 		return alphabet.indexOf(c);
 		// return (int) (c - ASCII_DIFF);
 	}
+
 
 	/**
 	 * Advances the rotor and wraps around if needed
@@ -68,6 +75,7 @@ public class Rotor {
 		}
 	}
 
+
 	/**
 	 * Gets the name of the Rotor
 	 * 
@@ -77,6 +85,7 @@ public class Rotor {
 		return specs[0];
 	}
 
+
 	/**
 	 * Gets the current position of the Rotor
 	 * 
@@ -85,6 +94,7 @@ public class Rotor {
 	public int getPosition() {
 		return position;
 	}
+
 
 	/**
 	 * Sets the current position to the specified position
@@ -99,6 +109,7 @@ public class Rotor {
 		}
 	}
 
+
 	/**
 	 * Gets the ring setting of the Rotor
 	 * @return The ring setting
@@ -106,6 +117,7 @@ public class Rotor {
 	public int getRingSetting(){
 		return ringSetting;
 	}
+
 
 	/**
 	 * Sets the ring setting of the Rotor
@@ -119,6 +131,7 @@ public class Rotor {
 			this.ringSetting = s;
 		}
 	}
+
 
 	/**
 	 * Converts the specific letter(passed as an index) forward
@@ -139,9 +152,9 @@ public class Rotor {
 		if (outputDiff < 0) {
 			return outputDiff + alphabet.length();
 		}
-
 		return outputDiff ;
 	}
+
 
 	/**
 	 * Converts the specific letter(passed as an index) backward
@@ -167,6 +180,7 @@ public class Rotor {
 		return outputDiff;
 	}
 
+	
 	/**
 	 * Checks whether the rotor is at its notch or not
 	 * 
