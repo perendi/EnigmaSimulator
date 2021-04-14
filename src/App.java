@@ -1,4 +1,3 @@
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -22,12 +21,9 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         // Create the FXMLLoader
         FXMLLoader loader = new FXMLLoader();
-        // Path to the FXML File
-        String fxmlDocPath = "src/Layout.fxml";
-        FileInputStream fxmlStream = new FileInputStream(fxmlDocPath);
 
         // Create the Pane and all Details
-        BorderPane root = (BorderPane) loader.load(fxmlStream);
+        BorderPane root = (BorderPane) loader.load(this.getClass().getResourceAsStream("Layout.fxml"));
         // Create the Scene
         homeScene = new Scene(root);
         homeScene.getStylesheets().setAll(theme);
