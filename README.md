@@ -12,6 +12,8 @@ The project contains two folders, where:
 - `src`: the folder to maintain sources
 - `lib`: the folder to maintain dependencies
 
+The project also contains a jupyter notebook, in which some experiments have been conducted with the Hungarian language and its Index of Coincidence.
+
 ## Creator
 
 This project is created by Daniel Matyas Perendi under the supervision of Dr. Prosanta Gope.
