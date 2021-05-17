@@ -44,8 +44,6 @@ public class Rotor {
 	 */
 	public static char toChar(int index) {
 		return alphabet.charAt(index);
-		// return alphabet.substring(index, index+1); RETURNS STRING
-		// return (char) (index + ASCII_DIFF);
 	}
 
 
@@ -57,7 +55,6 @@ public class Rotor {
 	 */
 	public static int toIndex(char c) {
 		return alphabet.indexOf(c);
-		// return (int) (c - ASCII_DIFF);
 	}
 
 
@@ -152,7 +149,7 @@ public class Rotor {
 		if (outputDiff < 0) {
 			return outputDiff + alphabet.length();
 		}
-		return outputDiff ;
+		return outputDiff;
 	}
 
 

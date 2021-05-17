@@ -135,6 +135,7 @@ public class UIController {
                 Alert alert = new Alert(AlertType.ERROR, "No two rotors can be of the same type!");
                 alert.showAndWait();
             } else {
+                // Set rotors, the machine and the textfield
                 Rotor lr = new Rotor(left, alphabet);
                 lr.setPosition(wleftPosSpinner.getValue());
                 lr.setRingSetting(wleftRingSpinner.getValue());
@@ -162,6 +163,7 @@ public class UIController {
                 Alert alert = new Alert(AlertType.ERROR, "No two rotors can be of the same type!");
                 alert.showAndWait();
             } else {
+                // Set rotors, the machine and the textfield
                 Rotor fi = new Rotor(first, alphabet);
                 fi.setPosition(m4firstPosSpinner.getValue());
                 fi.setRingSetting(m4firstRingSpinner.getValue());
